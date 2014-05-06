@@ -2,7 +2,7 @@
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
     id="uk.co.whiteoctober.cordova.AppVersion"
-    version="0.1.3">
+    version="0.1.4">
 
     <name>AppVersion</name>
     <description>
@@ -19,7 +19,7 @@
     </engines>
 
     <js-module src="www/AppVersionPlugin.js">
-       <clobbers target="cordova.getAppVersion" />
+       <merges target="cordova" />
     </js-module>
 
     <!-- android -->
@@ -27,15 +27,13 @@
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="AppVersion">
                 <param name="android-package" value="uk.co.whiteoctober.cordova.AppVersion"/>
-            </feature>   
+            </feature>
         </config-file>
         <source-file src="src/android/AppVersion.java" target-dir="src/uk/co/whiteoctober/cordova" />
     </platform>
 
     <!-- ios -->
     <platform name="ios">
-        <plugins-plist key="AppVersion" string="AppVersion" />
-
         <config-file target="config.xml" parent="/*">
             <feature name="AppVersion">
                 <param name="ios-package" value="AppVersion" />
@@ -45,7 +43,7 @@
         <header-file src="src/ios/AppVersion.h" />
         <source-file src="src/ios/AppVersion.m" />
     </platform>
-	
+
     <!-- windows8 -->
     <platform name="windows8">
         <js-module src="src/windows8/AppVersionProxy.js" name="AppVersionProxy">
